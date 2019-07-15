@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "requires $AMOUNT_ARGUMENTS arguments"
+    echo "usage: $SCRIPT_NAME $USAGE"
+    exit 1
+fi
+
+NAMESPACE=$1
+SERVICENAME=$2

@@ -1,0 +1,8 @@
+#!/bin/bash
+export SCRIPT_NAME='kubelog'
+export AMOUNT_ARGUMENTS='2'
+export USAGE='<namespace> <servicename>'
+
+source base
+
+kubectl logs -f --namespace "$NAMESPACE" "$(kubectl get pods --namespace "$NAMESPACE" | ag "$SERVICENAME" |cut -d ' ' -f1)"
