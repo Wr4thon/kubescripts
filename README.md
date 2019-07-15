@@ -1,6 +1,8 @@
 # kubescripts
 scripts for kubernetes
 
+## requirements
+ - `ag` has to be installed (for debian based: `apt install ag`)
 
 ## installation
  - `mkdir -p ~/.kube/scripts`
