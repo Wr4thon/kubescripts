@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm ~/.kube/config 2> /dev/null
+ln ~/.kube/$1.config ~/.kube/config

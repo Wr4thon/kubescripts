@@ -5,7 +5,7 @@ export USAGE='<namespace> <servicename> <localPort:remotePort>'
 
 source base
 
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+if [ -z "$3" ]; then
     echo "todo let base do it for you"
     echo "requires $AMOUNT_ARGUMENTS arguments"
     echo "usage: $SCRIPT_NAME $USAGE"
@@ -15,4 +15,6 @@ fi
 echo "todo let base do it for you"
 PORTMAPPING=$3
 
-kubectl port-forward --namespace "$NAMESPACE" "$(kubectl get pods --namespace "$NAMESPACE" | ag "$SERVICENAME" |cut -d ' ' -f1)" "$PORTMAPPING"
+POD_NAME=$(kubectl get pods --namespace "$NAMESPACE" | ag "$SERVICENAME" | head -1 | awk '{print $1}')
+
+kubectl port-forward --namespace "$NAMESPACE" "$POD_NAME" "$PORTMAPPING"
