@@ -15,6 +15,6 @@ fi
 echo "todo let base do it for you"
 PORTMAPPING=$3
 
-POD_NAME=$(kubectl get pods --namespace "$NAMESPACE" | ag "$SERVICENAME" | head -1 | awk '{print $1}')
+POD_NAME=$(kubectl get pods --namespace "$NAMESPACE" | grep "$SERVICENAME" | head -1 | awk '{print $1}')
 
 kubectl port-forward --namespace "$NAMESPACE" "$POD_NAME" "$PORTMAPPING"

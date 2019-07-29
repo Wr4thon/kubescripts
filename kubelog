@@ -5,4 +5,4 @@ export USAGE='<namespace> <servicename>'
 
 source base
 
-kubectl logs -f --namespace "$NAMESPACE" "$(kubectl get pods --namespace "$NAMESPACE" | ag "$SERVICENAME" |cut -d ' ' -f1)"
+kubectl logs -f --namespace "$NAMESPACE" "$(kubectl get pods --namespace "$NAMESPACE" | grep "$SERVICENAME" | awk '{print $1}')"
